@@ -20,15 +20,7 @@ class BasicFormContext extends Context
 
     public function setLocation(TemplateLocator $locator)
     {
-        $locator = parent::setLocation($locator);
-        $locator->prependLocation([DIRNAME_ELEMENTS .
-            DIRECTORY_SEPARATOR .
-            DIRNAME_EXPRESS .
-            DIRECTORY_SEPARATOR .
-            DIRNAME_EXPRESS_FORM_CONTROLS .
-            DIRECTORY_SEPARATOR .
-            DIRNAME_EXPRESS_FORM_CONTROLS // not a typo
-            , 'form_advanced_checkbox']);
+        $locator->setTemplate('frontend');
         return $locator;
     }
 
