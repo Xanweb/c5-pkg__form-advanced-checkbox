@@ -15,6 +15,10 @@ class AdvancedCheckboxSettings extends Settings
      * @ORM\Column(type="text", nullable=true)
      */
     protected $akContent = '';
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $akShowTitle = false;
 
     /**
      * @return string
@@ -23,6 +27,13 @@ class AdvancedCheckboxSettings extends Settings
     {
         return $this->akContent;
     }
+    /**
+     * @return string
+     */
+    public function getShowTitle()
+    {
+        return $this->akShowTitle;
+    }
 
     /**
      * @param string $akContent
@@ -30,5 +41,13 @@ class AdvancedCheckboxSettings extends Settings
     public function setContent($akContent)
     {
         $this->akContent = $akContent;
+    }
+
+    /**
+     * @param string $akContent
+     */
+    public function setShowTitle($akShowTitle)
+    {
+        $this->akShowTitle = $akShowTitle;
     }
 }

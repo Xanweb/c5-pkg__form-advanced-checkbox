@@ -1,12 +1,10 @@
 <?php defined('C5_EXECUTE') or die("Access Denied.");
-use Concrete\Core\Editor\LinkAbstractor;?>
+use Concrete\Core\Editor\LinkAbstractor;
+var_dump($akShowTitle);
+?>
 <div class="checkbox">
     <label>
-        <input
-            type="checkbox"
-            value="1"
-            name="<?=$view->field('value')?>"
-        >
+        <input type="checkbox" value="1" name="<?=$view->field('value')?>" >
         <?= LinkAbstractor::translateTo($akContent)?>
     </label>
 </div>
