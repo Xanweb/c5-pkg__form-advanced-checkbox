@@ -7,12 +7,14 @@ $editor->getPluginManager()->deselect(array('table', 'underline', 'specialcharac
 <fieldset>
     <legend><?php echo t('Settings')?></legend>
     <div class="form-group">
-        <label><?php echo $form->checkbox('akShowTitle', 1, $akShowTitle);?> <?php echo t('Show title');?></label>
+        <label>
+            <?php echo $form->checkbox('akShowTitle', 1, $akShowTitle);?>
+            <?php echo t('Display question label');?></label>
     </div>
     <div class="form-group">
-        <label><?php echo t('Content to show on checkbox')?></label>
+        <label><?php echo t('Checkbox content')?></label>
         <?php
-        echo $editor->outputStandardEditor('akContent', $akContent); //isset($question) ? LinkAbstractor::translateTo($question->getName()) : ''
+        echo $editor->outputStandardEditor('akContent', \Concrete\Core\Editor\LinkAbstractor::translateTo($akContent));
         ?>
     </div>
 
