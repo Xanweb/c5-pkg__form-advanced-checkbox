@@ -23,22 +23,27 @@ class Controller extends Package
     {
         return t('Form advanced checkbox');
     }
-    protected $pkgAutoloaderRegistries = [
-        'src' => 'Concrete\Package\FormAdvancedCheckbox',
-    ];
     public function install()
     {
         $pkg = parent::install();
-        $app = Facade::getFacadeApplication();
-        $atFactory = $app->make(TypeFactory::class);
+        $this->takeOverBlockType($pkg);
 
-        $at = $atFactory->getByHandle('advanced_checkbox');
-        if (!is_object($at)) {
-            $at = $atFactory->add('advanced_checkbox', 'Advanced checkbox', $pkg);
+    }
+
+    public function uninstall()
+    {
+        $this->takeOverBlockType($this->pkg, true);
+        parent::uninstall();
+
+    }
+
+    private function takeOverBlockType($pkg, $restore= false, $btHandle = 'form') {
+        $db = Loader::db();
+        if($restore){
+            $db->query("update BlockTypes set pkgID = ? where btHandle = ?", array(0, $btHandle));
         }
-        $siteAkc = $app->make(CategoryService::class)->getByHandle('site');
-        if (is_object($siteAkc)) {
-            $siteAkc->getController()->associateAttributeKeyType($at);
+        else {
+            $db->query("update BlockTypes set pkgID = ? where btHandle = ?", array($pkg->getPackageID(), $btHandle));
         }
     }
 }
