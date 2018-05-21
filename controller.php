@@ -13,7 +13,7 @@ class Controller extends Package
 {
     protected $pkgHandle = 'form_advanced_checkbox';
     protected $appVersionRequired = '8.1.0';
-    protected $pkgVersion = '0.9';
+    protected $pkgVersion = '0.9.0';
 
     protected $pkgAutoloaderRegistries = [
         'src' => 'Concrete\Package\FormAdvancedCheckbox',
