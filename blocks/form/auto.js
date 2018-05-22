@@ -87,9 +87,9 @@ var miniSurvey = {
 
 
         if (radioButton.value == 'advancedCheckbox') {
-            $('#answeradvancedCheckboxArea' + mode).show();
+            $('#answerAdvancedCheckboxArea' + mode).show();
         } else {
-            $('#answeradvancedCheckboxArea' + mode).hide();
+            $('#answerAdvancedCheckboxArea' + mode).hide();
         }
 
         if (radioButton.value == 'date' || radioButton.value == 'datetime') {
@@ -114,8 +114,13 @@ var miniSurvey = {
             msqID = parseInt($('#msqID').val(), 10);
         }
         var formID = '#answerType' + mode;
-        answerType = $(formID).val();
+        var answerType = $(formID).val();
         var options = encodeURIComponent($('#answerOptions' + mode).val());
+        if(answerType == 'advancedCheckbox'){
+
+            var ckeditorId = $('textarea[name="answerOptionsAdvancedCheckbox'+mode+'"]').attr('id');
+            options = CKEDITOR.instances[ckeditorId].getData();
+        }
         var postStr = 'question=' + encodeURIComponent($('#question' + mode).val()) + '&options=' + options;
         postStr += '&defaultDate=' + encodeURIComponent($('#defaultDate' + mode).val());
         postStr += '&width=' + escape($('#width' + mode).val());
@@ -194,6 +199,10 @@ var miniSurvey = {
                 $('#editQuestionForm').css('display', 'block');
                 $('#questionEdit').val(jsonObj.question);
                 $('#answerOptionsEdit').val(jsonObj.optionVals.replace(/%%/g, "\r\n"));
+                if(jsonObj.inputType == 'advancedCheckbox'){
+                    var ckeditorId = $('textarea[name="answerOptionsAdvancedCheckboxEdit"]').attr('id');
+                    CKEDITOR.instances[ckeditorId].setData(jsonObj.optionVals.replace(/%%/g, "\r\n"));
+                }
                 $('#widthEdit').val(jsonObj.width);
                 $('#heightEdit').val(jsonObj.height);
                 $('#positionEdit').val(jsonObj.position);
