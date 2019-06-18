@@ -73,7 +73,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $type = $this->getAttributeKeySettings();
         if (isset($akey->type)) {
             $akShowTitle = (string) $akey->type['show-title'];
-            $label = (string) $akey->checkboxlabel;
+            $label = (string) $akey->type->checkboxlabel;
             if ('' != $akShowTitle) {
                 $type->setShowTitle(true);
             }
