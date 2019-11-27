@@ -3,10 +3,10 @@
   "type": "concrete5-package",
   "description": "Checkbox attribute with CkEditor label",
   "keywords": ["checkbox", "attribute"],
+  "license": "proprietary",
   "minimum-stability": "dev",
   "require": {
-    "php": ">=5.5.9",
-    "composer/installers": ">=1.0.7"
+    "composer/installers": "~1.0"
   },
   "support": {
     "source": "https://gitlab.xanweb.de/concrete58-packages/form-advanced-checkbox"
