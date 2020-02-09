@@ -15,7 +15,7 @@ class Controller extends Package implements ProviderAggregateInterface
 {
     protected $pkgHandle = 'form_advanced_checkbox';
     protected $appVersionRequired = '8.2.1';
-    protected $pkgVersion = '0.9.4';
+    protected $pkgVersion = '1.0.0';
     protected $pkgAutoloaderRegistries = [
         'src' => 'Concrete\Package\FormAdvancedCheckbox',
     ];

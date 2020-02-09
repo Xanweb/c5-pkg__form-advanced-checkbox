@@ -54,6 +54,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
 
     /**
      * @param \SimpleXMLElement $akey
+     *
      * @return mixed
      */
     public function exportKey($akey)
@@ -65,6 +66,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $node = dom_import_simplexml($checkboxLblNode);
         $no = $node->ownerDocument;
         $node->appendChild($no->createCDataSection(LinkAbstractor::export($this->akContent)));
+
         return $akey;
     }
 
@@ -147,7 +149,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         if (isset($data['akShowTitle']) && $data['akShowTitle']) {
             $akShowTitle = true;
         }
-        $type->setContent($akContent);
+        $type->setContent(LinkAbstractor::translateTo($akContent));
         $type->setShowTitle($akShowTitle);
 
         return $type;
