@@ -6,7 +6,13 @@
   "license": "proprietary",
   "minimum-stability": "dev",
   "require": {
-    "composer/installers": "~1.0"
+    "composer/installers": "~1.0",
+    "xanweb/c5-module": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Xanweb\\FormAdvancedCheckbox\\": "src/Xanweb/FormAdvancedCheckbox"
+    }
   },
   "support": {
     "source": "https://gitlab.xanium.io/concrete58-packages/form-advanced-checkbox"

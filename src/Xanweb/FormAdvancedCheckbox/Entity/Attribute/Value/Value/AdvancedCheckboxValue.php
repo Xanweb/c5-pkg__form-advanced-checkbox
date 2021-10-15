@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Package\FormAdvancedCheckbox\Entity\Attribute\Value\Value;
+namespace Xanweb\FormAdvancedCheckbox\Entity\Attribute\Value\Value;
 
 use Doctrine\ORM\Mapping as ORM;
 use Concrete\Core\Entity\Attribute\Value\Value\AbstractValue;

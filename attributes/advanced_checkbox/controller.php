@@ -3,8 +3,8 @@ namespace Concrete\Package\FormAdvancedCheckbox\Attribute\AdvancedCheckbox;
 
 use Concrete\Core\Attribute\Controller as AttributeTypeController;
 use Concrete\Core\Attribute\SimpleTextExportableAttributeInterface;
-use Concrete\Package\FormAdvancedCheckbox\Entity\Attribute\Key\Settings\AdvancedCheckboxSettings;
-use Concrete\Package\FormAdvancedCheckbox\Entity\Attribute\Value\Value\AdvancedCheckboxValue;
+use Xanweb\FormAdvancedCheckbox\Entity\Attribute\Key\Settings\AdvancedCheckboxSettings;
+use Xanweb\FormAdvancedCheckbox\Entity\Attribute\Value\Value\AdvancedCheckboxValue;
 use Concrete\Core\Search\ItemList\Database\AttributedItemList;
 use Concrete\Core\Attribute\FontAwesomeIconFormatter;
 use Concrete\Core\Error\ErrorList\ErrorList;

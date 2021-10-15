@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Package\FormAdvancedCheckbox\Express\Form\Control\View;
+namespace Xanweb\FormAdvancedCheckbox\Express\Form\Control\View;
 
 use Concrete\Core\Express\Form\Context\ContextInterface;
 use Concrete\Core\Express\Form\Control\View\AttributeKeyFormView as CoreAttributeKeyFormView;

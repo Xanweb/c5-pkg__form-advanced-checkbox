@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Package\FormAdvancedCheckbox\Form\Context\Registry;
+namespace Xanweb\FormAdvancedCheckbox\Form\Context\Registry;
 
 use Concrete\Core\Form\Context\Registry\ControlEntry;
 use Concrete\Core\Form\Context\Registry\ControlRegistry as CoreControlRegistry;

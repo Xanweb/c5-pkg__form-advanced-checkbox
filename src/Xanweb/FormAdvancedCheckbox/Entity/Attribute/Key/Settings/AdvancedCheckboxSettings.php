@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Package\FormAdvancedCheckbox\Entity\Attribute\Key\Settings;
+namespace Xanweb\FormAdvancedCheckbox\Entity\Attribute\Key\Settings;
 
 use Doctrine\ORM\Mapping as ORM;
 use Concrete\Core\Entity\Attribute\Key\Settings\Settings as SettingsBase;
