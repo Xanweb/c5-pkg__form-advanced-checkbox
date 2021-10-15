@@ -1,11 +1,23 @@
 <?php defined('C5_EXECUTE') or die("Access Denied.");
+
+/**
+ * @var Concrete\Core\Attribute\View $view
+ * @var Concrete\Core\Form\Service\Form $form
+ * @var Concrete\Package\FormAdvancedCheckbox\Attribute\AdvancedCheckbox\Controller $controller
+ * @var bool $checked
+ */
+
 use Concrete\Core\Editor\LinkAbstractor;
 
 ?>
 
-<div class="checkbox">
-    <label>
-        <input type="checkbox" value="1" name="<?php echo $view->field('value'); ?>" <?php if ($checked) { ?> checked <?php } ?> >
-        <?= LinkAbstractor::translateFrom($controller->getCheckboxLabel()); ?>
-    </label>
+<div class="form-group">
+    <div class="form-check">
+        <?php
+        echo $form->checkbox($view->field('value'), 1, $checked);
+        ?>
+        <label class="form-check-label" for="<?php echo $view->field('value'); ?>">
+            <?= LinkAbstractor::translateFrom($controller->getCheckboxLabel()); ?>
+        </label>
+    </div>
 </div>

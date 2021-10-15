@@ -12,6 +12,7 @@ use Concrete\Core\Editor\LinkAbstractor;
 
 class Controller extends AttributeTypeController implements SimpleTextExportableAttributeInterface
 {
+    protected $helpers = ['form'];
     protected $searchIndexFieldDefinition = ['type' => 'boolean', 'options' => ['default' => 0, 'notnull' => false]];
 
     public function getIconFormatter()
@@ -93,7 +94,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $checked = false;
         if (is_object($this->attributeValue)) {
             $value = $this->getAttributeValue()->getValue();
-            $checked = 1 == $value ? true : false;
+            $checked = (bool)$value;
         }
 
         $this->set('checked', $checked);
@@ -101,7 +102,6 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
 
     public function type_form()
     {
-        $this->set('form', $this->app->make('helper/form'));
         $this->set('editor', $this->app->make('editor'));
         $this->load();
     }
@@ -110,8 +110,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
     public function createAttributeValue($value)
     {
         $v = new AdvancedCheckboxValue();
-        $value = (false == $value || '0' == $value) ? false : true;
-        $v->setValue($value);
+        $v->setValue((bool)$value);
 
         return $v;
     }
@@ -169,13 +168,13 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
     {
         $data = $this->post();
 
-        return $this->createAttributeValue(isset($data['value']) ? $data['value'] : false);
+        return $this->createAttributeValue((bool) $data['value']);
     }
 
     // if this gets run we assume we need it to be validated/checked
     public function validateForm($data)
     {
-        return isset($data['value']) && 1 == $data['value'];
+        return (bool) $data['value'];
     }
 
     /**
