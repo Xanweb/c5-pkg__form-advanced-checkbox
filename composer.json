@@ -5,7 +5,13 @@
   "keywords": ["checkbox", "attribute"],
   "license": "proprietary",
   "minimum-stability": "dev",
+  "scripts": {
+    "translate": "..\\..\\concrete\\bin\\concrete5 c5:translate-package form_advanced_checkbox -l de_DE",
+    "phpcs": "..\\..\\concrete\\bin\\concrete5 c5:phpcs --no-cache -p 7.4 -- fix .",
+    "force-update": "..\\..\\concrete\\bin\\concrete5 c5:package:update -f -- form_advanced_checkbox"
+  },
   "require": {
+    "php": ">=7.4",
     "composer/installers": "~1.0",
     "xanweb/c5-module": "^2.1"
   },
