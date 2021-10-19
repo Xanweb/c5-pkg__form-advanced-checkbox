@@ -13,11 +13,9 @@ use Concrete\Core\Editor\LinkAbstractor;
 
 <div class="form-group">
     <div class="form-check">
-        <?php
-        echo $form->checkbox($view->field('value'), 1, $checked);
-        ?>
-        <label class="form-check-label" for="<?php echo $view->field('value'); ?>">
-            <?= LinkAbstractor::translateFrom($controller->getCheckboxLabel()); ?>
+        <?= $form->checkbox($view->field('value'), 1, $checked) ?>
+        <label class="form-check-label" for="<?= $view->field('value') ?>">
+            <?= LinkAbstractor::translateFrom($controller->getCheckboxLabel()) ?>
         </label>
     </div>
 </div>
