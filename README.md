@@ -10,4 +10,4 @@ Checkbox attribute with CkEditor label.
  concrete/bin/concrete5 c5:package-install form_advanced_checkbox
 ```
 
-![icon](https://www.xanweb.com/packages/soprano_theme/themes/soprano/images/logo-xanweb.svg)  
+![icon](https://www.xanweb.com/logo.svg)  
