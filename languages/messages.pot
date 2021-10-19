@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-19T09:59:32+01:00\n"
-"PO-Revision-Date: 2021-10-19T09:59:32+01:00\n"
+"POT-Creation-Date: 2021-10-19T11:59:07+01:00\n"
+"PO-Revision-Date: 2021-10-19T11:59:07+01:00\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
@@ -25,7 +25,7 @@ msgctxt "AttributeTypeName"
 msgid "Advanced checkbox"
 msgstr ""
 
-#: packages/form_advanced_checkbox/attributes/advanced_checkbox/controller.php:217
+#: packages/form_advanced_checkbox/attributes/advanced_checkbox/controller.php:215
 msgid "\"%1$s\" is not a valid boolean value for the attribute with handle %2$s"
 msgstr ""
 
@@ -33,15 +33,15 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: packages/form_advanced_checkbox/attributes/advanced_checkbox/type_form.php:23
+#: packages/form_advanced_checkbox/attributes/advanced_checkbox/type_form.php:22
 msgid "Display question label"
 msgstr ""
 
-#: packages/form_advanced_checkbox/attributes/advanced_checkbox/type_form.php:29
+#: packages/form_advanced_checkbox/attributes/advanced_checkbox/type_form.php:27
 msgid "Checkbox content"
 msgstr ""
 
-#: packages/form_advanced_checkbox/attributes/advanced_checkbox/type_form.php:31
+#: packages/form_advanced_checkbox/attributes/advanced_checkbox/type_form.php:29
 msgid "This will be displayed next to the checkbox. If it is blank, the name of the attribute will be displayed."
 msgstr ""
 
