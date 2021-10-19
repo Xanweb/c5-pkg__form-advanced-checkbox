@@ -1,9 +1,10 @@
 <?php
+
 namespace Concrete\Package\FormAdvancedCheckbox;
 
-use Concrete\Core\Database\EntityManager\Provider\StandardPackageProvider;
-use Concrete\Core\Database\EntityManager\Provider\ProviderAggregateInterface;
 use Concrete\Core\Attribute\Category\CategoryService;
+use Concrete\Core\Database\EntityManager\Provider\ProviderAggregateInterface;
+use Concrete\Core\Database\EntityManager\Provider\StandardPackageProvider;
 use Concrete\Core\Package\Package;
 use Xanweb\FormAdvancedCheckbox\Module\Module;
 use Xanweb\Module\Installer;
@@ -12,15 +13,15 @@ use Xanweb\Module\Uninstaller;
 class Controller extends Package implements ProviderAggregateInterface
 {
     protected $pkgHandle = 'form_advanced_checkbox';
-    protected $appVersionRequired = '8.2.1';
-    protected $pkgVersion = '1.0.0';
+    protected $appVersionRequired = '9.0.0@RC';
+    protected $pkgVersion = '2.0';
 
-    public function getPackageName()
+    public function getPackageName(): string
     {
         return t('Advanced Checkbox Attribute');
     }
 
-    public function getPackageDescription()
+    public function getPackageDescription(): string
     {
         return t('Checkbox attribute with CkEditor label');
     }
@@ -30,34 +31,40 @@ class Controller extends Package implements ProviderAggregateInterface
         Module::boot();
     }
 
-    public function getPackageAutoloaderRegistries()
+    public function getPackageAutoloaderRegistries(): array
     {
         if (!class_exists(Module::class)) {
             return [
-                'src/Xanweb/FormAdvancedCheckbox' => 'Xanweb\FormAdvancedCheckbox'
+                'src/Xanweb/FormAdvancedCheckbox' => 'Xanweb\FormAdvancedCheckbox',
             ];
         }
+
         return [];
     }
 
     public function install()
     {
         $pkg = parent::install();
+
         $installer = new Installer($pkg);
-        $siteAkc = $this->app->make(CategoryService::class)->getByHandle('site');
-        $at = $installer->installAttributeType('advanced_checkbox', 'Advanced checkbox', $siteAkc);
-        $expressAkc = $this->app->make(CategoryService::class)->getByHandle('express');
-        $expressAkc->getController()->associateAttributeKeyType($at);
+        $at = $installer->installAttributeType('advanced_checkbox', tc('AttributeTypeName', 'Advanced checkbox'));
+
+        $categorySvc = $this->app->make(CategoryService::class);
+        foreach (['site', 'express'] as $akCategoryHandle) {
+            $akc = $categorySvc->getByHandle($akCategoryHandle);
+            $akc->getController()->associateAttributeKeyType($at);
+        }
     }
 
     public function uninstall()
     {
         parent::uninstall();
+
         Uninstaller::dropTables('atAdvancedCheckboxSettings', 'atAdvancedCheckbox');
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getEntityManagerProvider()
     {

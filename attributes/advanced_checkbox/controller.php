@@ -1,14 +1,15 @@
 <?php
+
 namespace Concrete\Package\FormAdvancedCheckbox\Attribute\AdvancedCheckbox;
 
 use Concrete\Core\Attribute\Controller as AttributeTypeController;
+use Concrete\Core\Attribute\FontAwesomeIconFormatter;
 use Concrete\Core\Attribute\SimpleTextExportableAttributeInterface;
+use Concrete\Core\Editor\LinkAbstractor;
+use Concrete\Core\Error\ErrorList\ErrorList;
+use Concrete\Core\Search\ItemList\Database\AttributedItemList;
 use Xanweb\FormAdvancedCheckbox\Entity\Attribute\Key\Settings\AdvancedCheckboxSettings;
 use Xanweb\FormAdvancedCheckbox\Entity\Attribute\Value\Value\AdvancedCheckboxValue;
-use Concrete\Core\Search\ItemList\Database\AttributedItemList;
-use Concrete\Core\Attribute\FontAwesomeIconFormatter;
-use Concrete\Core\Error\ErrorList\ErrorList;
-use Concrete\Core\Editor\LinkAbstractor;
 
 class Controller extends AttributeTypeController implements SimpleTextExportableAttributeInterface
 {
@@ -34,9 +35,11 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         switch ($comparison) {
             case '<>':
             case '!=':
-                $boolean = $boolean ? false : true;
+                $boolean = !$boolean;
+
                 break;
         }
+
         if ($boolean) {
             $qb->andWhere("{$column} = 1");
         } else {
@@ -46,11 +49,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
 
     public function getCheckboxLabel()
     {
-        if ($this->akContent) {
-            return $this->akContent;
-        }
-
-        return $this->getAttributeKey()->getAttributeKeyName();
+        return $this->akContent ?? $this->getAttributeKey()->getAttributeKeyName();
     }
 
     /**
@@ -94,7 +93,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $checked = false;
         if (is_object($this->attributeValue)) {
             $value = $this->getAttributeValue()->getValue();
-            $checked = (bool)$value;
+            $checked = (bool) $value;
         }
 
         $this->set('checked', $checked);
@@ -110,7 +109,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
     public function createAttributeValue($value)
     {
         $v = new AdvancedCheckboxValue();
-        $v->setValue((bool)$value);
+        $v->setValue((bool) $value);
 
         return $v;
     }
@@ -148,6 +147,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         if (isset($data['akShowTitle']) && $data['akShowTitle']) {
             $akShowTitle = true;
         }
+
         $type->setContent(LinkAbstractor::translateTo($akContent));
         $type->setShowTitle($akShowTitle);
 
@@ -233,7 +233,6 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         }
 
         $settings = $ak->getAttributeKeySettings();
-
         $this->akContent = $settings->getContent();
         $this->akShowTitle = $settings->getShowTitle();
 

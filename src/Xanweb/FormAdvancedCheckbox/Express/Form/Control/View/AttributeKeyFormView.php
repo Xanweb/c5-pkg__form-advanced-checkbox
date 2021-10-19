@@ -1,4 +1,5 @@
 <?php
+
 namespace Xanweb\FormAdvancedCheckbox\Express\Form\Control\View;
 
 use Concrete\Core\Express\Form\Context\ContextInterface;
@@ -10,7 +11,7 @@ class AttributeKeyFormView extends CoreAttributeKeyFormView
     {
         parent::__construct($context, $control);
 
-        if ($this->key->getAttributeTypeHandle() == 'advanced_checkbox') {
+        if ($this->key->getAttributeTypeHandle() === 'advanced_checkbox') {
             $this->view->setSupportsLabel($this->key->getAttributeKeySettings()->supportsTitle());
             // Hide asterix / Required term if no label is displayed
             if (!$this->view->supportsLabel()) {

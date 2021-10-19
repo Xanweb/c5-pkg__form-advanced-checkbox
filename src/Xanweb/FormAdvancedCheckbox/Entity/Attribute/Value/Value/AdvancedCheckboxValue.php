@@ -1,8 +1,9 @@
 <?php
+
 namespace Xanweb\FormAdvancedCheckbox\Entity\Attribute\Value\Value;
 
-use Doctrine\ORM\Mapping as ORM;
 use Concrete\Core\Entity\Attribute\Value\Value\AbstractValue;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -14,6 +15,11 @@ class AdvancedCheckboxValue extends AbstractValue
      * @ORM\Column(type="boolean")
      */
     protected $value = false;
+
+    public function __toString()
+    {
+        return ($this->value) ? t('I agree') : t("I don't agree");
+    }
 
     /**
      * @return mixed
@@ -29,10 +35,5 @@ class AdvancedCheckboxValue extends AbstractValue
     public function setValue($value)
     {
         $this->value = $value;
-    }
-
-    public function __toString()
-    {
-        return ($this->value) ? t('I agree') : t("I don't agree");
     }
 }

@@ -8,7 +8,6 @@ use Concrete\Core\Editor\LinkAbstractor;
  * @var bool $akShowTitle
  * @var string $akContent
  */
-
 $editor->setAllowFileManager(false);
 $editor->setAllowSitemap(true);
 $editor->getPluginManager()->deselect(['table', 'underline', 'specialcharacters', 'sourcearea', 'image', 'sourcedialog']);
@@ -27,8 +26,8 @@ $editor->getPluginManager()->deselect(['table', 'underline', 'specialcharacters'
     </div>
 
     <div class="form-group">
-        <label class="form-label"><?= t("Checkbox content"); ?></label>
+        <label class="form-label"><?= t('Checkbox content'); ?></label>
         <?= $editor->outputStandardEditor('akContent', LinkAbstractor::translateFromEditMode($akContent)); ?>
-        <p class="help-block"><?= t('This will be displayed next to the checkbox. If it is blank, the name of the attribute will be displayed.');?></p>
+        <p class="help-block"><?= t('This will be displayed next to the checkbox. If it is blank, the name of the attribute will be displayed.'); ?></p>
     </div>
 </fieldset>
