@@ -1,4 +1,21 @@
+# ignore system files
+.DS_Store
 .idea
-vendor
+thumbs.db
+__MACOSX
+._*
+.*swp
+.*swo
+.env
+
+# ignore node files
+/build/node_modules/
+
+# ignore composer files
+composer.phar
 composer.lock
-.php_cs.cache
+/vendor/
+
+# ignore domain security files
+.htaccess
+.htpasswd
