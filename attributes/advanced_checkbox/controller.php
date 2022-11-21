@@ -168,13 +168,13 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
     {
         $data = $this->post();
 
-        return $this->createAttributeValue((bool) $data['value']);
+        return $this->createAttributeValue($data['value'] ?? false);
     }
 
     // if this gets run we assume we need it to be validated/checked
     public function validateForm($data)
     {
-        return (bool) $data['value'];
+        return isset($data['value']) && $data['value'] == 1;
     }
 
     /**
