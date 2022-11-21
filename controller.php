@@ -13,8 +13,8 @@ use Xanweb\Module\Uninstaller;
 class Controller extends Package implements ProviderAggregateInterface
 {
     protected $pkgHandle = 'form_advanced_checkbox';
-    protected $appVersionRequired = '9.0.0@RC';
-    protected $pkgVersion = '2.0';
+    protected $appVersionRequired = '9.0.0';
+    protected $pkgVersion = '2.0.2';
 
     public function getPackageName(): string
     {
